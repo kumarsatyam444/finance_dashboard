@@ -42,8 +42,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, activeTab, se
           transition: { type: "spring", stiffness: 250, damping: 30 }
         }}
         className={cn(
-          "fixed top-4 left-4 bottom-4 w-72 glass rounded-[2.5rem] z-50 transition-all lg:translate-x-0 border-none",
-          !isOpen && "lg:w-72"
+          "fixed top-4 left-4 bottom-4 w-72 glass rounded-[2.5rem] z-50 transition-all border-none"
         )}
       >
         <div className="p-10 flex items-center justify-between">

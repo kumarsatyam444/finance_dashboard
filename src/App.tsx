@@ -7,10 +7,25 @@ import { Transactions } from './pages/Transactions';
 import { Insights } from './pages/Insights';
 import { Settings } from './pages/Settings';
 import { motion, AnimatePresence } from 'motion/react';
+import { cn } from './lib/utils';
+import { useEffect } from 'react';
 
 const AppContent: React.FC = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth >= 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsSidebarOpen(true);
+      } else {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const renderContent = () => {
     switch (activeTab) {
@@ -31,8 +46,11 @@ const AppContent: React.FC = () => {
         setActiveTab={setActiveTab}
       />
       
-      <div className="lg:pl-80 flex flex-col min-h-screen">
-        <Navbar onMenuClick={() => setIsSidebarOpen(true)} />
+      <div className={cn(
+        "flex flex-col min-h-screen transition-all duration-500 ease-in-out",
+        isSidebarOpen ? "lg:pl-80" : "lg:pl-0"
+      )}>
+        <Navbar onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} />
         
         <main className="flex-1 p-6 lg:p-12 max-w-[1600px] mx-auto w-full">
           <AnimatePresence mode="wait">

@@ -18,7 +18,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
             whileHover={{ scale: 1.1, rotate: 90 }}
             whileTap={{ scale: 0.9 }}
             onClick={onMenuClick}
-            className="lg:hidden p-3.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl transition-colors shadow-sm"
+            className="p-3.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl transition-colors shadow-sm"
           >
             <Menu className="w-7 h-7" />
           </motion.button>
