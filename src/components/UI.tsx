@@ -24,7 +24,7 @@ export const Card: React.FC<CardProps> = ({ children, className, glass = true, h
       whileTap={hover ? { scale: 0.99 } : {}}
       className={cn(
         "rounded-[2.5rem] p-10 transition-all duration-500",
-        glass ? "glass" : "bg-white dark:bg-slate-800",
+        glass ? "glass" : (!className?.includes('bg-') && "bg-white dark:bg-slate-800"),
         className
       )}
     >

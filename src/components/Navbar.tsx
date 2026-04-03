@@ -35,13 +35,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
 
         <div className="flex items-center gap-4 md:gap-8">
           {/* Role Switcher */}
-          <div className="flex items-center bg-slate-100/50 dark:bg-slate-800/50 rounded-[1.5rem] p-1.5 shadow-inner">
+          <div className="flex items-center bg-slate-100/50 dark:bg-slate-800/50 rounded-[1.5rem] p-1.5 shadow-inner border border-slate-200 dark:border-slate-700">
             <button 
               onClick={() => setRole('Viewer')}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-2xl text-xs font-black uppercase tracking-widest transition-all ${
                 role === 'Viewer' 
-                  ? 'bg-white dark:bg-slate-700 shadow-xl text-indigo-600 dark:text-indigo-300 scale-105' 
-                  : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+                  ? 'bg-indigo-600 text-white shadow-xl scale-105' 
+                  : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200'
               }`}
             >
               <Eye className="w-4 h-4" />
@@ -51,8 +51,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
               onClick={() => setRole('Admin')}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-2xl text-xs font-black uppercase tracking-widest transition-all ${
                 role === 'Admin' 
-                  ? 'bg-white dark:bg-slate-700 shadow-xl text-indigo-600 dark:text-indigo-300 scale-105' 
-                  : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+                  ? 'bg-indigo-600 text-white shadow-xl scale-105' 
+                  : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200'
               }`}
             >
               <ShieldCheck className="w-4 h-4" />

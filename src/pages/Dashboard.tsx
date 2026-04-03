@@ -96,7 +96,7 @@ export const Dashboard: React.FC = () => {
       {/* Bento Grid Layout */}
       <StaggerContainer className="grid grid-cols-1 md:grid-cols-12 gap-8">
         {/* Main Balance Card */}
-        <Card className="md:col-span-8 relative overflow-hidden group border-none bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-800 text-white p-12">
+        <Card glass={false} className="md:col-span-8 relative overflow-hidden group border-none bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-800 text-white p-12">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -mr-48 -mt-48 blur-3xl group-hover:scale-150 transition-transform duration-1000" />
           <div className="relative z-10 flex flex-col h-full justify-between gap-12">
             <div className="space-y-4">
@@ -123,7 +123,7 @@ export const Dashboard: React.FC = () => {
 
         {/* Quick Actions / Stats */}
         <div className="md:col-span-4 grid grid-cols-1 gap-8">
-          <Card className="bg-emerald-500 text-white border-none p-10 flex flex-col justify-between group">
+          <Card glass={false} className="bg-emerald-500 text-white border-none p-10 flex flex-col justify-between group">
             <div className="flex items-center justify-between">
               <div className="p-4 bg-white/20 rounded-2xl group-hover:rotate-12 transition-transform">
                 <TrendingUp className="w-8 h-8" />
@@ -135,7 +135,7 @@ export const Dashboard: React.FC = () => {
               <h3 className="text-3xl font-black tracking-tight">Financial Health</h3>
             </div>
           </Card>
-          <Card className="bg-rose-500 text-white border-none p-10 flex flex-col justify-between group">
+          <Card glass={false} className="bg-rose-500 text-white border-none p-10 flex flex-col justify-between group">
             <div className="flex items-center justify-between">
               <div className="p-4 bg-white/20 rounded-2xl group-hover:-rotate-12 transition-transform">
                 <TrendingDown className="w-8 h-8" />
@@ -180,11 +180,20 @@ export const Dashboard: React.FC = () => {
                     <stop offset="95%" stopColor="#f43f5e" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" opacity={0.5} />
-                <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#94a3b8', fontWeight: 800 }} dy={15} />
-                <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#94a3b8', fontWeight: 800 }} tickFormatter={(val) => `$${val/1000}k`} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--chart-grid)" opacity={1} />
+                <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: 'var(--chart-text)', fontWeight: 800 }} dy={15} />
+                <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: 'var(--chart-text)', fontWeight: 800 }} tickFormatter={(val) => `$${val/1000}k`} />
                 <Tooltip 
-                  contentStyle={{ borderRadius: '24px', border: 'none', boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.25)', padding: '20px' }}
+                  contentStyle={{ 
+                    borderRadius: '24px', 
+                    border: 'none', 
+                    boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.25)', 
+                    padding: '20px',
+                    backgroundColor: 'var(--tooltip-bg, #ffffff)',
+                    color: 'var(--tooltip-text, #0f172a)'
+                  }}
+                  labelStyle={{ fontWeight: 800, marginBottom: '8px', color: 'var(--tooltip-text, #0f172a)' }}
+                  itemStyle={{ fontWeight: 600 }}
                   cursor={{ stroke: '#6366f1', strokeWidth: 2, strokeDasharray: '5 5' }}
                 />
                 <Area type="monotone" dataKey="income" stroke="#6366f1" strokeWidth={4} fillOpacity={1} fill="url(#colorIncome)" />
